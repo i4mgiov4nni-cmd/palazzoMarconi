@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B&B</title>
+
+<!-- Font elegante -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f4f4f6;
+    color: #2c2c2c;
+}
+
+.container {
+    max-width: 820px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 28px;
+}
+
+h2 {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+p, li {
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.lang-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.flag {
+    font-size: 16px;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+.whatsapp {
+    display: block;
+    text-align: center;
+    background: #25D366;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.whatsapp:hover {
+    background: #1ebe5d;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="lang-switch">
+    <button class="lang-btn" onclick="setLang('it')">
+        <span class="flag">🇮🇹</span> IT
+    </button>
+    <button class="lang-btn" onclick="setLang('en')">
+        <span class="flag">🇬🇧</span> EN
+    </button>
+</div>
+
+<div class="card">
+    <h1 data-it="Nome B&B" data-en="B&B Name"></h1>
+    <p data-it="Descrizione della struttura..." data-en="Description of the property..."></p>
+</div>
+
+<div class="card">
+    <h2 data-it="WiFi" data-en="WiFi"></h2>
+    <p><strong>Nome:</strong> <span data-it="NOME_WIFI" data-en="WIFI_NAME"></span></p>
+    <p><strong>Password:</strong> <span data-it="PASSWORD_WIFI" data-en="WIFI_PASSWORD"></span></p>
+</div>
+
+<div class="card">
+    <h2 data-it="Regole della casa" data-en="House Rules"></h2>
+    <ul>
+        <li data-it="Check-in dalle 15:00" data-en="Check-in from 3:00 PM"></li>
+        <li data-it="Silenzio dopo le 23:00" data-en="Quiet hours after 11:00 PM"></li>
+        <li data-it="Vietato fumare" data-en="No smoking"></li>
+        <li data-it="Spegnere luci e aria condizionata quando si esce" data-en="Turn off lights and AC when leaving"></li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2 data-it="Punti di interesse" data-en="Points of Interest"></h2>
+    <ul>
+        <li data-it="Centro storico" data-en="Old town"></li>
+        <li data-it="Lungomare" data-en="Seafront"></li>
+        <li data-it="Ristoranti locali" data-en="Local restaurants"></li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2 data-it="Contatti" data-en="Contacts"></h2>
+    <a class="whatsapp" href="https://wa.me/391234567890">
+        WhatsApp
+    </a>
+</div>
+
+</div>
+
+<script>
+let currentLang = "it";
+
+function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll("[data-it]").forEach(el => {
+        el.innerText = el.getAttribute("data-" + lang);
+    });
+}
+
+// rilevamento automatico lingua
+let userLang = navigator.language || navigator.userLanguage;
+
+if (userLang.startsWith("it")) {
+    setLang("it");
+} else {
+    setLang("en");
+}
+</script>
+
+</body>
+</html>
